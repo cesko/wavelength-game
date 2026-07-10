@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bpo2ywy2cxk03"]
+
+[ext_resource type="PackedScene" uid="uid://dqtpls2kf83v3" path="res://game_context/environment.tscn" id="1_81bfv"]
+[ext_resource type="PackedScene" uid="uid://cqv8dx5p0opch" path="res://game_context/player/player.tscn" id="2_a4g5s"]
+[ext_resource type="Script" uid="uid://curo7l8bami4t" path="res://game_context/player_camera.gd" id="3_a4g5s"]
+
+[sub_resource type="Environment" id="Environment_a4g5s"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.7
+glow_bloom = 1.0
+glow_hdr_scale = 1.0
+
+[node name="GameRoot" type="Node2D" unique_id=1445984586]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=501910554]
+environment = SubResource("Environment_a4g5s")
+
+[node name="Environment" parent="." unique_id=1320472925 instance=ExtResource("1_81bfv")]
+
+[node name="Player" parent="." unique_id=1645657139 instance=ExtResource("2_a4g5s")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1141758085 node_paths=PackedStringArray("target")]
+script = ExtResource("3_a4g5s")
+target = NodePath("../Player")
+offset_x = 300.0

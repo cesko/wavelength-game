@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://cqv8dx5p0opch"]
+
+[ext_resource type="Script" uid="uid://db6qh1w7j3p32" path="res://game_context/player/player.gd" id="1_rt1og"]
+[ext_resource type="Script" uid="uid://cebmngnjllnkl" path="res://game_context/player/player_input.gd" id="2_4gxhl"]
+[ext_resource type="Script" uid="uid://1ie7k8erj2by" path="res://core/tracking_line_2d.gd" id="3_4gxhl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_434cm"]
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_4gxhl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX/DeathExplosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX/DeathBlast:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vkh6m"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX/DeathExplosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VFX/DeathBlast:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ak6bu"]
+_data = {
+&"RESET": SubResource("Animation_4gxhl"),
+&"death": SubResource("Animation_vkh6m")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_dh5rl"]
+size = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_vkh6m"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.0034843206, 0.9819277)
+colors = PackedColorArray(16.279, 1.459, 18.892, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5rurt"]
+gradient = SubResource("Gradient_vkh6m")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5217391)
+
+[sub_resource type="Curve" id="Curve_4gxhl"]
+_data = [Vector2(0, 0), 0.0, 1.6693423, 0, 0, Vector2(1, 1), -0.4815413, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ak6bu"]
+offsets = PackedFloat32Array(0.077738516, 1)
+colors = PackedColorArray(1.1246428, 0.27231458, 2.7075353, 1, 16.279064, 1.4585093, 18.892157, 1)
+
+[sub_resource type="Gradient" id="Gradient_4gxhl"]
+offsets = PackedFloat32Array(0.73493975, 0.87349397)
+colors = PackedColorArray(2.509, 0, 4.416, 0.639, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4gxhl"]
+gradient = SubResource("Gradient_4gxhl")
+width = 16
+height = 32
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Curve" id="Curve_vkh6m"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), -10.561798, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_urg26"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.5226481, 0.9965157, 1)
+colors = PackedColorArray(2.5089016, 0, 4.415934, 0, 2.509, 0, 4.416, 0.639, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ak6bu"]
+gradient = SubResource("Gradient_urg26")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Curve" id="Curve_urg26"]
+_limits = [0.0, 1.0, 0.0, 1.5]
+_data = [Vector2(0, 0), 0.0, 2.182204, 0, 0, Vector2(1.5, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_f5gn6"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Player" type="CharacterBody2D" unique_id=1645657139]
+script = ExtResource("1_rt1og")
+
+[node name="PlayerInput" type="Node" parent="." unique_id=49010421]
+script = ExtResource("2_4gxhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1682354427]
+shape = SubResource("CircleShape2D_434cm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1581863336]
+libraries/ = SubResource("AnimationLibrary_ak6bu")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=329924458]
+mesh = SubResource("QuadMesh_dh5rl")
+texture = SubResource("GradientTexture2D_5rurt")
+
+[node name="TrackingLine2D" type="Line2D" parent="." unique_id=273868232 node_paths=PackedStringArray("target_node")]
+width_curve = SubResource("Curve_4gxhl")
+gradient = SubResource("Gradient_ak6bu")
+end_cap_mode = 2
+script = ExtResource("3_4gxhl")
+track_duration = 1.0
+target_node = NodePath("..")
+metadata/_custom_type_script = "uid://1ie7k8erj2by"
+
+[node name="VFX" type="Node2D" parent="." unique_id=1577157015]
+
+[node name="DeathExplosion" type="CPUParticles2D" parent="VFX" unique_id=101391302]
+emitting = false
+amount = 96
+texture = SubResource("GradientTexture2D_4gxhl")
+one_shot = true
+explosiveness = 1.0
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 300.0
+initial_velocity_max = 700.0
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_vkh6m")
+
+[node name="DeathBlast" type="CPUParticles2D" parent="VFX" unique_id=879647884]
+emitting = false
+amount = 1
+texture = SubResource("GradientTexture2D_ak6bu")
+lifetime = 0.5
+one_shot = true
+gravity = Vector2(0, 0)
+scale_amount_min = 0.7
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_urg26")
+color_ramp = SubResource("Gradient_f5gn6")
