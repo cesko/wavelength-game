@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dm8dfuxeoe4ym"]
+
+[ext_resource type="Script" uid="uid://b3i6gpa1k5ypv" path="res://title_context/gradient_label/gradient_label.gd" id="1_w7cos"]
+
+[sub_resource type="Gradient" id="Gradient_lrmyl"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gg5x2"]
+gradient = SubResource("Gradient_lrmyl")
+use_hdr = true
+
+[node name="WavelengthLabel" type="Control" unique_id=250771576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GradientLabel" type="Label" parent="." unique_id=39565266]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Wavelength"
+script = ExtResource("1_w7cos")
+gradient_texture = SubResource("GradientTexture1D_gg5x2")
+metadata/_custom_type_script = "uid://b3i6gpa1k5ypv"

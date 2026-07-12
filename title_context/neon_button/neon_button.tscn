@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://pw4q7fwhwhq"]
+
+[ext_resource type="Script" uid="uid://brdgg3b0jvsif" path="res://title_context/neon_button/neon_button.gd" id="1_y8oab"]
+[ext_resource type="Shader" uid="uid://ce4kra70diqr1" path="res://title_context/neon_button/neon_button.gdshader" id="2_pq0hi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8oab"]
+shader = ExtResource("2_pq0hi")
+shader_parameter/color_a = Color(0, 1, 1, 1)
+shader_parameter/color_b = Color(1, 0, 1, 1)
+shader_parameter/border_width = 0.04
+shader_parameter/corner_radius = 0.15
+shader_parameter/glow_strength = 2.0
+shader_parameter/glow_size = 0.15
+shader_parameter/fill_alpha = 0.15
+shader_parameter/brightness_mult = 1.5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_434cm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cf4in"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0sa7j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ipmh0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ixyj"]
+
+[node name="NeonButton" type="Control" unique_id=153355164]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y8oab")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=976817851]
+material = SubResource("ShaderMaterial_y8oab")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=2041378626]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_434cm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cf4in")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0sa7j")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ipmh0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ixyj")
+text = "BUTTON"
+flat = true
