@@ -11,6 +11,12 @@ extends Node2D
 
 @export var texture_tile_size: Vector2 = Vector2(128, 128)
 
+@export var level_seed: int = -1
+	#set(value):
+		#level_seed = value
+		#_init_profile()
+		
+
 # Editor-only: forces a rebuild when toggled/changed in the inspector.
 @export var editor_preview: bool = true:
 	set(value):
@@ -43,7 +49,7 @@ func _ready() -> void:
 		_rebuild_editor_preview()
 		return
 
-	profile = EnvironmentProfile.new(start_length, initial_total_length, step_size)
+	_init_profile()
 	_rebuild_meshes()
 
 
@@ -75,21 +81,28 @@ func _rebuild_editor_preview() -> void:
 # RUNTIME LOGIC (unchanged)
 # ------------------------------------------------------------------
 
+func _init_profile() -> void:
+	profile = EnvironmentProfile.new(start_length, initial_total_length, step_size, level_seed)
+
 func _get_camera() -> Camera2D:
 	return get_viewport().get_camera_2d()
 
-
-func _check_extend() -> void:
+func _get_visible_x() -> Vector2:
 	var camera := _get_camera()
 	if camera == null:
-		return
-
+		return Vector2.ZERO
+	
 	var viewport_size := get_viewport_rect().size
 	var visible_half_width := (viewport_size.x * camera.zoom.x) / 2.0
-	var target_x := camera.global_position.x + visible_half_width + extend_buffer
+	return Vector2(
+		camera.global_position.x - visible_half_width,
+		camera.global_position.x + visible_half_width)
 
+func _check_extend() -> void:
+	
+	var target_x:float = _get_visible_x()[1] + extend_buffer
 	var current_max_x := self.global_position.x + (profile.get_step_count() - 1) * step_size
-
+	
 	if target_x > current_max_x:
 		var additional_length := target_x - current_max_x
 		profile.extend(additional_length, step_size)
@@ -97,13 +110,7 @@ func _check_extend() -> void:
 
 
 func _check_cleanup() -> void:
-	var camera := _get_camera()
-	if camera == null:
-		return
-
-	var viewport_size := get_viewport_rect().size
-	var visible_half_width := (viewport_size.x * camera.zoom.x) / 2.0
-	var cleanup_edge_x := camera.global_position.x - visible_half_width - cleanup_buffer
+	var cleanup_edge_x :=  _get_visible_x()[0] - cleanup_buffer
 
 	var local_cleanup_x := cleanup_edge_x - self.global_position.x
 	var steps_to_trim := int(floor(local_cleanup_x / step_size))
@@ -128,6 +135,13 @@ func _rebuild_meshes() -> void:
 	var ceiling_points := PackedVector2Array()
 	var ground_points := PackedVector2Array()
 
+	var minimum_x = _get_visible_x()[0]
+	if minimum_x < 0:
+		print("minimum_x: ", minimum_x)
+		ceiling_points.append(Vector2(minimum_x, profile.ceiling_profile[0]))
+		ground_points.append(Vector2(minimum_x, profile.ground_profile[0]))
+		
+	
 	for i in range(profile.get_step_count()):
 		var x := i * step_size
 		ceiling_points.append(Vector2(x, profile.ceiling_profile[i]))

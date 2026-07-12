@@ -2,5 +2,19 @@
 
 [ext_resource type="Script" uid="uid://0g7r1fhode0w" path="res://main.gd" id="1_ig7tw"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_434cm"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D" unique_id=934136005]
 script = ExtResource("1_ig7tw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1354929610]
+layer = -99
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1281571693]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_434cm")

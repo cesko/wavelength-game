@@ -3,10 +3,10 @@ extends Control
 signal quit_button_pressed()
 signal play_again_button_pressed()
 
-@onready var score_display: Label = $TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/ScoreDisplay
-@onready var actions_display: Label = $TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/ActionsDisplay
-@onready var play_again_button: Button = $TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayAgain
-@onready var quit_button: Button = $TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Quit
+@onready var score_display: Label = $TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/CenterContainer/VBoxContainer2/ScoreDisplay
+@onready var actions_display: Label = $TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/CenterContainer/VBoxContainer2/ActionsDisplay
+@onready var play_again_button: Button = $TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayAgain
+@onready var quit_button: Button = $TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Quit
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cevpcdcyfddvn"]
+
+[ext_resource type="Script" uid="uid://jqp38wtu0bqq" path="res://game_context/paused_ui.gd" id="1_rs5gi"]
+[ext_resource type="Theme" uid="uid://bpsg4p6nrkxnx" path="res://assets/wave_length_theme.tres" id="2_xyqko"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4v0r"]
+bg_color = Color(0, 0, 0, 0.99607843)
+border_color = Color(1.0823805, 0.93389755, 1.8247963, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_right = 50
+corner_detail = 20
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
+[node name="PausedUI" type="Control" unique_id=299698326]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rs5gi")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=320317231]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=845354956]
+custom_maximum_size = Vector2(700, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c4v0r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1002128245]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1373319588]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_xyqko")
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 1.661, 2.454, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 70
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1843227075]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=2035792230]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("2_xyqko")
+text = "Resume"
+
+[node name="Quit" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1515297221]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("2_xyqko")
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

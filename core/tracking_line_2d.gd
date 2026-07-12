@@ -13,6 +13,9 @@ class_name TrackingLine2D
 # Stores (timestamp, position) pairs
 var _history: Array[Dictionary] = []
 
+# Internal clock, driven by delta instead of wall time
+var _elapsed_time: float = 0.0
+
 # The node whose position we're tracking (defaults to self)
 @export var target_node: Node2D
 
@@ -23,6 +26,7 @@ func _ready() -> void:
 	clear_points()
 
 func _process(delta: float) -> void:
+	_elapsed_time += delta
 	_record_position()
 	_prune_old_points()
 	_rebuild_line_points()
@@ -41,13 +45,12 @@ func _record_position() -> void:
 			return
 
 	_history.append({
-		"time": Time.get_ticks_msec() / 1000.0,
+		"time": _elapsed_time,
 		"position": current_pos
 	})
 
 func _prune_old_points() -> void:
-	var now: float = Time.get_ticks_msec() / 1000.0
-	var cutoff: float = now - track_duration
+	var cutoff: float = _elapsed_time - track_duration
 
 	# Remove from front while too old
 	while _history.size() > 0 and _history[0]["time"] < cutoff:
@@ -68,8 +71,7 @@ func get_position_seconds_ago(seconds_ago: float) -> Vector2:
 	if _history.is_empty():
 		return target_node.global_position if track_global_position else target_node.position
 
-	var now: float = Time.get_ticks_msec() / 1000.0
-	var target_time: float = now - seconds_ago
+	var target_time: float = _elapsed_time - seconds_ago
 
 	# Find closest recorded point
 	for i in range(_history.size() - 1, -1, -1):

@@ -21,12 +21,12 @@ expand_margin_top = 50.0
 expand_margin_right = 50.0
 expand_margin_bottom = 50.0
 
-[sub_resource type="Gradient" id="Gradient_cjtoq"]
-offsets = PackedFloat32Array(0.5261324, 0.74912894)
+[sub_resource type="Gradient" id="Gradient_mk62v"]
+offsets = PackedFloat32Array(0.5215947, 0.74912894)
 colors = PackedColorArray(5.912981, 0, 5.912981, 1, 0, 4.121644, 5.912981, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_a21kt"]
-gradient = SubResource("Gradient_cjtoq")
+gradient = SubResource("Gradient_mk62v")
 use_hdr = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4uekc"]
@@ -34,17 +34,15 @@ shader = ExtResource("4_o1s6f")
 shader_parameter/gradient_texture = SubResource("GradientTexture1D_a21kt")
 shader_parameter/label_width = 857.0
 
-[node name="TitleRoot" type="Control" unique_id=1161124948 node_paths=PackedStringArray("initial_focus")]
+[node name="TitleRoot" type="Control" unique_id=1018263472 node_paths=PackedStringArray("initial_focus")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource("1_o1s6f")
-initial_focus = NodePath("TitleScreen/PanelContainer/VBoxContainer/VBoxContainer/PlayBtn")
+initial_focus = NodePath("MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer/PlayBtn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1708568938]
 environment = SubResource("Environment_434cm")
@@ -59,30 +57,34 @@ autoscroll = Vector2(10, 0)
 position = Vector2(960, 600)
 texture = ExtResource("2_o1s6f")
 
-[node name="TitleScreen" type="MarginContainer" parent="." unique_id=695485489]
-visible = false
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=695485489]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 45.0
-offset_right = 1104.0
-offset_bottom = 602.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 260.0
+offset_top = 115.0
+offset_right = 1660.0
+offset_bottom = 965.0
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="PanelContainer" type="PanelContainer" parent="TitleScreen" unique_id=306620088]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=306620088]
+custom_minimum_size = Vector2(1200, 650)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_434cm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/PanelContainer" unique_id=646697419]
+[node name="TitleScreen" type="CenterContainer" parent="MarginContainer/PanelContainer" unique_id=571964615]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/TitleScreen" unique_id=646697419]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="TitleScreen/PanelContainer/VBoxContainer" unique_id=512825110]
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/TitleScreen/VBoxContainer" unique_id=512825110]
 material = SubResource("ShaderMaterial_4uekc")
 layout_mode = 2
 size_flags_horizontal = 4
@@ -97,88 +99,75 @@ script = ExtResource("5_pdtn1")
 gradient_texture = SubResource("GradientTexture1D_a21kt")
 metadata/_custom_type_script = "uid://b3i6gpa1k5ypv"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/PanelContainer/VBoxContainer" unique_id=1457983392]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/TitleScreen/VBoxContainer" unique_id=1457983392]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="PlayBtn" type="Button" parent="TitleScreen/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1457457307]
+[node name="PlayBtn" type="Button" parent="MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer" unique_id=1457457307]
 layout_mode = 2
 theme = ExtResource("2_65eea")
 theme_override_font_sizes/font_size = 32
 text = "PLAY"
 
-[node name="SettingsBtn" type="Button" parent="TitleScreen/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1988185895]
+[node name="SettingsBtn" type="Button" parent="MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer" unique_id=1988185895]
 layout_mode = 2
 theme = ExtResource("2_65eea")
 text = "SETTINGS"
 
-[node name="Highscore" type="Button" parent="TitleScreen/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1645106883]
+[node name="Highscore" type="Button" parent="MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer" unique_id=1645106883]
 layout_mode = 2
 theme = ExtResource("2_65eea")
 text = "HIGHSCORE"
 
-[node name="Quit" type="Button" parent="TitleScreen/PanelContainer/VBoxContainer/VBoxContainer" unique_id=701849109]
+[node name="ExitBtn" type="Button" parent="MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer" unique_id=701849109]
 layout_mode = 2
 theme = ExtResource("2_65eea")
-text = "QUIT"
+text = "EXIT"
 
-[node name="PlayScreen" type="MarginContainer" parent="." unique_id=199286223]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 45.0
-offset_right = 1104.0
-offset_bottom = 602.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
-
-[node name="PanelContainer" type="PanelContainer" parent="PlayScreen" unique_id=1228393488]
+[node name="PlayScreen" type="CenterContainer" parent="MarginContainer/PanelContainer" unique_id=1390169408]
+visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_434cm")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="PlayScreen/PanelContainer" unique_id=1428307230]
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/PlayScreen" unique_id=1428307230]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayScreen/PanelContainer/VBoxContainer" unique_id=2030118715]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/PlayScreen/VBoxContainer" unique_id=2030118715]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="PlayEasyBtn" type="Button" parent="PlayScreen/PanelContainer/VBoxContainer/VBoxContainer" unique_id=877314079]
+[node name="PlayEasyBtn" type="Button" parent="MarginContainer/PanelContainer/PlayScreen/VBoxContainer/VBoxContainer" unique_id=877314079]
 layout_mode = 2
 theme = ExtResource("2_65eea")
 text = "EASY"
 
-[node name="PlayNormalBtn" type="Button" parent="PlayScreen/PanelContainer/VBoxContainer/VBoxContainer" unique_id=863521659]
+[node name="PlayNormalBtn" type="Button" parent="MarginContainer/PanelContainer/PlayScreen/VBoxContainer/VBoxContainer" unique_id=863521659]
 layout_mode = 2
 theme = ExtResource("2_65eea")
 text = "NORMAL"
 
-[node name="PlayHardBtn" type="Button" parent="PlayScreen/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1957008416]
+[node name="PlayHardBtn" type="Button" parent="MarginContainer/PanelContainer/PlayScreen/VBoxContainer/VBoxContainer" unique_id=1957008416]
 layout_mode = 2
 theme = ExtResource("2_65eea")
 text = "HARD"
 
-[node name="PlaySinucidalBtn" type="Button" parent="PlayScreen/PanelContainer/VBoxContainer/VBoxContainer" unique_id=100068340]
+[node name="PlaySinucidalBtn" type="Button" parent="MarginContainer/PanelContainer/PlayScreen/VBoxContainer/VBoxContainer" unique_id=100068340]
 layout_mode = 2
 theme = ExtResource("2_65eea")
 text = "SINUCIDAL
 "
 
-[connection signal="pressed" from="TitleScreen/PanelContainer/VBoxContainer/VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
-[connection signal="pressed" from="TitleScreen/PanelContainer/VBoxContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
-[connection signal="pressed" from="TitleScreen/PanelContainer/VBoxContainer/VBoxContainer/Highscore" to="." method="_on_highscore_pressed"]
-[connection signal="pressed" from="TitleScreen/PanelContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="PlayScreen/PanelContainer/VBoxContainer/VBoxContainer/PlayEasyBtn" to="." method="_on_play_easy_btn_pressed"]
-[connection signal="pressed" from="PlayScreen/PanelContainer/VBoxContainer/VBoxContainer/PlayNormalBtn" to="." method="_on_play_normal_btn_pressed"]
-[connection signal="pressed" from="PlayScreen/PanelContainer/VBoxContainer/VBoxContainer/PlayHardBtn" to="." method="_on_play_hard_btn_pressed"]
-[connection signal="pressed" from="PlayScreen/PanelContainer/VBoxContainer/VBoxContainer/PlaySinucidalBtn" to="." method="_on_play_sinucidal_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer/Highscore" to="." method="_on_highscore_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/TitleScreen/VBoxContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/PlayScreen/VBoxContainer/VBoxContainer/PlayEasyBtn" to="." method="_on_play_easy_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/PlayScreen/VBoxContainer/VBoxContainer/PlayNormalBtn" to="." method="_on_play_normal_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/PlayScreen/VBoxContainer/VBoxContainer/PlayHardBtn" to="." method="_on_play_hard_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/PlayScreen/VBoxContainer/VBoxContainer/PlaySinucidalBtn" to="." method="_on_play_sinucidal_btn_pressed"]

@@ -3,11 +3,12 @@ extends Control
 @export var initial_focus:Control
 
 signal play(GameSettings)
+signal exit()
 
 
 @onready var screens = {
-	"title": $TitleScreen,
-	"play": $PlayScreen
+	"title": $MarginContainer/PanelContainer/TitleScreen,
+	"play": $MarginContainer/PanelContainer/PlayScreen
 }
 
 var initial_screen = "title"
@@ -53,7 +54,7 @@ func switch_to_screen(screen) -> void:
 	
 func _on_play_btn_pressed() -> void:
 	switch_to_screen("play")
-	$PlayScreen/PanelContainer/VBoxContainer/VBoxContainer/PlayNormalBtn.grab_focus()
+	# $PlayScreen/PanelContainer/VBoxContainer/VBoxContainer/PlayNormalBtn.grab_focus()
 	
 func _on_settings_btn_pressed() -> void:
 	pass # Replace with function body.
@@ -61,9 +62,8 @@ func _on_settings_btn_pressed() -> void:
 func _on_highscore_pressed() -> void:
 	pass # Replace with function body.
 
-func _on_quit_pressed() -> void:
-	pass
-
+func _on_exit_pressed() -> void:
+	exit.emit()
 
 # --- Play Screen ---
 

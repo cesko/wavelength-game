@@ -146,6 +146,7 @@ mesh = SubResource("QuadMesh_dh5rl")
 texture = SubResource("GradientTexture2D_5rurt")
 
 [node name="TrackingLine2D" type="Line2D" parent="." unique_id=273868232 node_paths=PackedStringArray("target_node")]
+points = PackedVector2Array(-100, 0, 0, 0)
 width_curve = SubResource("Curve_4gxhl")
 gradient = SubResource("Gradient_ak6bu")
 end_cap_mode = 2
