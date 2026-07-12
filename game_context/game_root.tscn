@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bpo2ywy2cxk03"]
 
+[ext_resource type="Script" uid="uid://cc7x0nrdfplcp" path="res://game_context/game_root.gd" id="1_5rpyc"]
 [ext_resource type="PackedScene" uid="uid://dqtpls2kf83v3" path="res://game_context/environment.tscn" id="1_81bfv"]
 [ext_resource type="Texture2D" uid="uid://do741kwiimxy7" path="res://assets/night_sky.png" id="1_nkmqt"]
 [ext_resource type="PackedScene" uid="uid://cqv8dx5p0opch" path="res://game_context/player/player.tscn" id="2_a4g5s"]
 [ext_resource type="Script" uid="uid://curo7l8bami4t" path="res://game_context/player_camera.gd" id="3_a4g5s"]
+[ext_resource type="PackedScene" uid="uid://ct8lvo0rq2k1d" path="res://game_context/gameover_ui.tscn" id="6_nc542"]
 
 [sub_resource type="Environment" id="Environment_a4g5s"]
 background_mode = 3
@@ -13,6 +15,7 @@ glow_bloom = 1.0
 glow_hdr_scale = 1.0
 
 [node name="GameRoot" type="Node2D" unique_id=1445984586]
+script = ExtResource("1_5rpyc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=501910554]
 environment = SubResource("Environment_a4g5s")
@@ -34,3 +37,10 @@ texture = ExtResource("1_nkmqt")
 script = ExtResource("3_a4g5s")
 target = NodePath("../Player")
 offset_x = 300.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=414641988]
+
+[node name="GameoverUi" parent="CanvasLayer" unique_id=299698326 instance=ExtResource("6_nc542")]
+visible = false
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]

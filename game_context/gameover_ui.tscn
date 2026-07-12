@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://ct8lvo0rq2k1d"]
+
+[ext_resource type="Shader" uid="uid://3uem5yd35kho" path="res://title_context/gradient_label/gradient_label.gdshader" id="1_ood6d"]
+[ext_resource type="Script" uid="uid://m47abd8fia34" path="res://game_context/gameover_ui.gd" id="1_w52oh"]
+[ext_resource type="Theme" uid="uid://bpsg4p6nrkxnx" path="res://assets/wave_length_theme.tres" id="2_w52oh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4v0r"]
+bg_color = Color(0, 0, 0, 0.98039216)
+border_color = Color(1.0823805, 0.93389755, 1.8247963, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_right = 50
+corner_detail = 20
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
+[sub_resource type="Gradient" id="Gradient_cjtoq"]
+offsets = PackedFloat32Array(0.5261324, 0.74912894)
+colors = PackedColorArray(5.912981, 0, 5.912981, 1, 0, 4.121644, 5.912981, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a8i7l"]
+gradient = SubResource("Gradient_cjtoq")
+use_hdr = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1pb8"]
+shader = ExtResource("1_ood6d")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_a8i7l")
+shader_parameter/label_width = 623.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_434cm"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1.661, 2.454, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[node name="GameoverUi" type="Control" unique_id=299698326]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w52oh")
+
+[node name="TitleScreen" type="MarginContainer" parent="." unique_id=1831622833]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 45.0
+offset_right = 1104.0
+offset_bottom = 602.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="TitleScreen" unique_id=845354956]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c4v0r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/PanelContainer" unique_id=1002128245]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="TitleScreen/PanelContainer/VBoxContainer" unique_id=1373319588]
+material = SubResource("ShaderMaterial_i1pb8")
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_w52oh")
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen/PanelContainer/VBoxContainer" unique_id=2056713868]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer" unique_id=851438945]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_434cm")
+
+[node name="VBoxContainer2" type="GridContainer" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=176563445]
+layout_mode = 2
+columns = 2
+
+[node name="ScoreLabel" type="Label" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1922281875]
+layout_mode = 2
+theme = ExtResource("2_w52oh")
+theme_override_colors/font_color = Color(0, 1.661, 2.454, 1)
+theme_override_font_sizes/font_size = 24
+text = "Score: "
+
+[node name="ScoreDisplay" type="Label" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=108848071]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_w52oh")
+theme_override_colors/font_color = Color(2.454227, 0, 2.454227, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+
+[node name="ActionsLabel" type="Label" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1128309709]
+layout_mode = 2
+theme = ExtResource("2_w52oh")
+theme_override_colors/font_color = Color(0, 1.661, 2.454, 1)
+theme_override_font_sizes/font_size = 24
+text = "Actions: "
+
+[node name="ActionsDisplay" type="Label" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1450405609]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_w52oh")
+theme_override_colors/font_color = Color(2.454227, 0, 2.454227, 1)
+theme_override_font_sizes/font_size = 24
+text = "n.a."
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1190397490]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PlayAgain" type="Button" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=652239924]
+layout_mode = 2
+theme = ExtResource("2_w52oh")
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="TitleScreen/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1515297221]
+layout_mode = 2
+theme = ExtResource("2_w52oh")
+text = "Quit"
