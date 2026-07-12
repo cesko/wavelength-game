@@ -21,3 +21,4 @@ func _process(delta: float) -> void:
 	
 func set_score(score:Score) -> void:
 	score_display.text = str(score.score())
+	actions_display.text = String.num(score.energy(), 1)

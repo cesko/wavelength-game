@@ -108,14 +108,18 @@ horizontal_alignment = 2
 
 [node name="ActionsLabel" type="Label" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/CenterContainer/VBoxContainer2" unique_id=1128309709]
 layout_mode = 2
+tooltip_text = "Score / Thrusts"
+mouse_filter = 1
 theme = ExtResource("2_w52oh")
 theme_override_colors/font_color = Color(0, 1.661, 2.454, 1)
 theme_override_font_sizes/font_size = 24
-text = "Actions: "
+text = "Energy: "
 
 [node name="ActionsDisplay" type="Label" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/CenterContainer/VBoxContainer2" unique_id=1450405609]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Score / Thrusts"
+mouse_filter = 1
 theme = ExtResource("2_w52oh")
 theme_override_colors/font_color = Color(2.454227, 0, 2.454227, 1)
 theme_override_font_sizes/font_size = 24

@@ -40,11 +40,17 @@ func _physics_process(delta: float) -> void:
 
 func on_collision(_collision: KinematicCollision2D) -> void:
 	die()
-	
+
+func get_distance() -> float:
+	return global_position.x
+
+func get_actions() -> float:
+	return player_input.thrust_counter
+
 func die():
 	is_alive = false
 	animation_player.play("death")
 	died.emit()
-	
+
 	
 	

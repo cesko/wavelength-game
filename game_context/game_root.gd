@@ -70,7 +70,8 @@ func toggle_pause():
 	
 func get_score() -> Score:
 	var score = Score.new()
-	score.distance = player.global_position.x
+	score.distance = player.get_distance()
+	score.actions = player.get_actions()
 	return score
 	
 func _apply_game_settings(gs:GameSettings) -> void:

@@ -10,3 +10,6 @@ func score() -> int:
 	var raw_score = distance * DISTANCE_FACTOR	
 	var score_value = floor(raw_score)
 	return score_value
+
+func energy() -> float:
+	return score() / actions
