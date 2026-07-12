@@ -11,7 +11,7 @@ var ground_profile:Array[float]
 var rng:RandomNumberGenerator
 var seed_value:int
 
-const CENTER_DEVIATION:float = 70
+const CENTER_DEVIATION:float = 50
 const MEAN_TUNNEL_HEIGHT:float = 500
 const TUNNEL_HEIGHT_DEVIATION:float = 120
 const TUNNEL_MIN_HEIGHT:float = 200

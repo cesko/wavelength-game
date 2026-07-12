@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bpo2ywy2cxk03"]
 
 [ext_resource type="PackedScene" uid="uid://dqtpls2kf83v3" path="res://game_context/environment.tscn" id="1_81bfv"]
+[ext_resource type="Texture2D" uid="uid://do741kwiimxy7" path="res://assets/night_sky.png" id="1_nkmqt"]
 [ext_resource type="PackedScene" uid="uid://cqv8dx5p0opch" path="res://game_context/player/player.tscn" id="2_a4g5s"]
 [ext_resource type="Script" uid="uid://curo7l8bami4t" path="res://game_context/player_camera.gd" id="3_a4g5s"]
 
@@ -15,6 +16,15 @@ glow_hdr_scale = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=501910554]
 environment = SubResource("Environment_a4g5s")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1283260054]
+z_index = -1
+scroll_scale = Vector2(0.05, 0.05)
+repeat_size = Vector2(1920, 1200)
+
+[node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=1227969592]
+position = Vector2(960, 600)
+texture = ExtResource("1_nkmqt")
 
 [node name="Environment" parent="." unique_id=1320472925 instance=ExtResource("1_81bfv")]
 
