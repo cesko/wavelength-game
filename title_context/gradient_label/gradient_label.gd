@@ -20,10 +20,16 @@ func _ready() -> void:
 	_setup_material()
 	_ensure_default_gradient()
 	_update_shader_params()
-	_update_label_width()
+	_update_label_transform()
 
-	if not resized.is_connected(_update_label_width):
-		resized.connect(_update_label_width)
+	if not resized.is_connected(_update_label_transform):
+		resized.connect(_update_label_transform)
+
+
+func _process(_delta: float) -> void:
+	# Global position can change without a resize (e.g. moving, scrolling,
+	# animating, parent transform changes), so keep this updated every frame.
+	_update_label_transform()
 
 
 func _setup_material() -> void:
@@ -51,7 +57,7 @@ func _setup_material() -> void:
 		material = _shader_material
 
 	_update_shader_params()
-	_update_label_width()
+	_update_label_transform()
 
 
 func _ensure_default_gradient() -> void:
@@ -70,12 +76,13 @@ func _update_shader_params() -> void:
 	_shader_material.set_shader_parameter("gradient_texture", gradient_texture)
 
 
-func _update_label_width() -> void:
+func _update_label_transform() -> void:
 	if _shader_material == null:
 		return
+	_shader_material.set_shader_parameter("label_global_x", global_position.x)
 	_shader_material.set_shader_parameter("label_width", size.x)
 
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED:
-		_update_label_width()
+		_update_label_transform()

@@ -1,9 +1,9 @@
 extends Resource
 class_name GameSettings
 
-@export var speed:float = 500
-@export var thrust:float = 700
-@export var gravity:float = 700
+@export var speed:float = 600
+@export var thrust:float = 800
+@export var gravity:float = 800
 @export var level_seed:int = -1
 
 # --- PRESETS ---

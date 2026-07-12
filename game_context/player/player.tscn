@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://1ie7k8erj2by" path="res://core/tracking_line_2d.gd" id="3_4gxhl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_434cm"]
-radius = 5.0
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_4gxhl"]
 length = 0.001
@@ -68,7 +68,7 @@ _data = {
 }
 
 [sub_resource type="QuadMesh" id="QuadMesh_dh5rl"]
-size = Vector2(10, 10)
+size = Vector2(12, 12)
 
 [sub_resource type="Gradient" id="Gradient_vkh6m"]
 interpolation_mode = 1
@@ -147,6 +147,7 @@ texture = SubResource("GradientTexture2D_5rurt")
 
 [node name="TrackingLine2D" type="Line2D" parent="." unique_id=273868232 node_paths=PackedStringArray("target_node")]
 points = PackedVector2Array(-100, 0, 0, 0)
+width = 12.0
 width_curve = SubResource("Curve_4gxhl")
 gradient = SubResource("Gradient_ak6bu")
 end_cap_mode = 2

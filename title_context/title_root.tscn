@@ -22,7 +22,7 @@ expand_margin_right = 50.0
 expand_margin_bottom = 50.0
 
 [sub_resource type="Gradient" id="Gradient_mk62v"]
-offsets = PackedFloat32Array(0.5215947, 0.74912894)
+offsets = PackedFloat32Array(0.33, 0.66)
 colors = PackedColorArray(5.912981, 0, 5.912981, 1, 0, 4.121644, 5.912981, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_a21kt"]
@@ -32,6 +32,7 @@ use_hdr = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4uekc"]
 shader = ExtResource("4_o1s6f")
 shader_parameter/gradient_texture = SubResource("GradientTexture1D_a21kt")
+shader_parameter/label_global_x = 0.0
 shader_parameter/label_width = 857.0
 
 [node name="TitleRoot" type="Control" unique_id=1018263472 node_paths=PackedStringArray("initial_focus")]
@@ -76,7 +77,6 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_434cm")
 
 [node name="TitleScreen" type="CenterContainer" parent="MarginContainer/PanelContainer" unique_id=571964615]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/TitleScreen" unique_id=646697419]

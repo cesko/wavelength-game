@@ -15,6 +15,7 @@ ToDos
 - [ ] Implement Level Seed system
 - [ ] Implement Highscore Manager and Highscore Menu
 - [x] Make sure level fully covers screen at starting position
-- [ ] In-Game Score display
+- [x] In-Game Score display
 - [ ] Credits
 - [x] Start Paused / Pausing Game
+- [ ] Music

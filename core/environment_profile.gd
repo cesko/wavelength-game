@@ -11,13 +11,13 @@ var ground_profile:Array[float]
 var rng:RandomNumberGenerator
 var seed_value:int
 
-const CENTER_DEVIATION:float = 50
-const MEAN_TUNNEL_HEIGHT:float = 500
-const TUNNEL_HEIGHT_DEVIATION:float = 120
-const TUNNEL_MIN_HEIGHT:float = 200
+const CENTER_DEVIATION:float = 60
+const MEAN_TUNNEL_HEIGHT:float = 700
+const TUNNEL_HEIGHT_DEVIATION:float = 200
+const TUNNEL_MIN_HEIGHT:float = 250
 
-const CEILING_MIN = -280
-const GROUND_MIN = 280
+const CEILING_MIN = -430
+const GROUND_MIN = 430
 
 func _init(start_length:float, total_length:float, step_size:float = 50, rng_seed:int = -1) -> void:
 	rng = RandomNumberGenerator.new()
