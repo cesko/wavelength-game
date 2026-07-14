@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://boq4r60iuo1sb" path="res://assets/night_sky_dense.png" id="2_o1s6f"]
 [ext_resource type="Shader" uid="uid://3uem5yd35kho" path="res://title_context/gradient_label/gradient_label.gdshader" id="4_o1s6f"]
 [ext_resource type="Script" uid="uid://b3i6gpa1k5ypv" path="res://title_context/gradient_label/gradient_label.gd" id="5_pdtn1"]
+[ext_resource type="Script" uid="uid://ttgdkry3rs5g" path="res://core/components/grab_focus_upon_visible.gd" id="6_o1s6f"]
 
 [sub_resource type="Environment" id="Environment_434cm"]
 background_mode = 3
@@ -24,7 +25,7 @@ shader_parameter/gradient_texture = SubResource("GradientTexture1D_a21kt")
 shader_parameter/label_global_x = 102.0
 shader_parameter/label_width = 1715.0
 
-[node name="TitleRoot" type="Control" unique_id=1018263472 node_paths=PackedStringArray("initial_focus", "title_screen", "play_screen")]
+[node name="TitleRoot" type="Control" unique_id=1018263472 node_paths=PackedStringArray("title_screen", "play_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +35,6 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_o1s6f")
-initial_focus = NodePath("TitleScreen/VBoxContainer/HBoxContainer/PlayBtn")
 title_screen = NodePath("TitleScreen")
 play_screen = NodePath("PlayScreen")
 
@@ -52,7 +52,6 @@ position = Vector2(960, 600)
 texture = ExtResource("2_o1s6f")
 
 [node name="TitleScreen" type="CenterContainer" parent="." unique_id=571964615]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,7 +88,7 @@ alignment = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
 
 [node name="SettingsBtn" type="Button" parent="TitleScreen/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1988185895]
 layout_mode = 2
@@ -113,7 +112,17 @@ theme = ExtResource("2_65eea")
 theme_override_font_sizes/font_size = 150
 text = "PLAY"
 
+[node name="GrabFocusUponVisibleComponent" type="Control" parent="TitleScreen/VBoxContainer/HBoxContainer/PlayBtn" unique_id=1634567122]
+anchors_preset = 0
+offset_left = 660.0
+offset_top = -112.0
+offset_right = 660.0
+offset_bottom = 341.0
+script = ExtResource("6_o1s6f")
+metadata/_custom_type_script = "uid://ttgdkry3rs5g"
+
 [node name="PlayScreen" type="CenterContainer" parent="." unique_id=1390169408]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,7 +139,7 @@ alignment = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="PlayEasyBtn" type="Button" parent="PlayScreen/VBoxContainer/VBoxContainer" unique_id=877314079]
@@ -142,6 +151,15 @@ text = "EASY"
 layout_mode = 2
 theme = ExtResource("2_65eea")
 text = "NORMAL"
+
+[node name="GrabFocusUponVisibleComponent" type="Control" parent="PlayScreen/VBoxContainer/VBoxContainer/PlayNormalBtn" unique_id=2033348789]
+anchors_preset = 0
+offset_left = 660.0
+offset_top = -112.0
+offset_right = 660.0
+offset_bottom = 341.0
+script = ExtResource("6_o1s6f")
+metadata/_custom_type_script = "uid://ttgdkry3rs5g"
 
 [node name="PlayHardBtn" type="Button" parent="PlayScreen/VBoxContainer/VBoxContainer" unique_id=1957008416]
 layout_mode = 2

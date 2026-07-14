@@ -47,6 +47,7 @@ texture = ExtResource("1_nkmqt")
 
 [node name="Player" parent="." unique_id=1645657139 instance=ExtResource("2_a4g5s")]
 process_mode = 1
+size = 20.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1141758085 node_paths=PackedStringArray("target")]
 process_mode = 1

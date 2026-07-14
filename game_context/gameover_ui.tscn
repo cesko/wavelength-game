@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://m47abd8fia34" path="res://game_context/gameover_ui.gd" id="1_w52oh"]
 [ext_resource type="Theme" uid="uid://bpsg4p6nrkxnx" path="res://assets/wave_length_theme.tres" id="2_w52oh"]
+[ext_resource type="Script" uid="uid://ttgdkry3rs5g" path="res://core/components/grab_focus_upon_visible.gd" id="3_ood6d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4v0r"]
 bg_color = Color(0, 0, 0, 0.99607843)
@@ -129,14 +130,21 @@ horizontal_alignment = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 10
+theme_override_constants/separation = 50
 alignment = 1
 
 [node name="PlayAgain" type="Button" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=652239924]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme = ExtResource("2_w52oh")
 text = "Try Again"
+
+[node name="GrabFocusUponVisibleComponent" type="Control" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayAgain" unique_id=377746429]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ood6d")
+metadata/_custom_type_script = "uid://ttgdkry3rs5g"
 
 [node name="Quit" type="Button" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1515297221]
 custom_minimum_size = Vector2(0, 40)

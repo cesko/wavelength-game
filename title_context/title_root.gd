@@ -1,7 +1,5 @@
 extends Control
 
-@export var initial_focus:Control
-
 signal play(GameSettings)
 signal exit()
 
@@ -15,7 +13,6 @@ signal exit()
 }
 
 
-
 var initial_screen = "title"
 var current_screen
 
@@ -23,9 +20,6 @@ var current_screen
 func _ready() -> void:
 	hide_all_screens()
 	switch_to_screen(initial_screen)
-	
-	if initial_focus:
-		initial_focus.grab_focus()
 	
 	custom_minimum_size = get_viewport().get_visible_rect().size
 	size = get_viewport().get_visible_rect().size	

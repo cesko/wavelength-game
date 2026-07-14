@@ -11,7 +11,6 @@ signal play_again_button_pressed()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	play_again_button.grab_focus()
 	play_again_button.pressed.connect(func (): play_again_button_pressed.emit())
 	quit_button.pressed.connect(func(): quit_button_pressed.emit())
 
