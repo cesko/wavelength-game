@@ -12,6 +12,7 @@ var rng:RandomNumberGenerator
 var seed_value:int
 
 const CENTER_DEVIATION:float = 60
+const CENTER_OFFSET_MAX:float = 200
 const MEAN_TUNNEL_HEIGHT:float = 700
 const TUNNEL_HEIGHT_DEVIATION:float = 200
 const TUNNEL_MIN_HEIGHT:float = 250
@@ -44,10 +45,9 @@ func _generate_random(steps:int) -> void:
 
 func _extend_unit_step() -> void:
 	var new_center = self.center[-1] + rng.randfn(0.0, CENTER_DEVIATION)
-	new_center = clamp(new_center, -200, 200)
+	new_center = clamp(new_center, -CENTER_OFFSET_MAX, CENTER_OFFSET_MAX)
 	# BUG FIX: was using self.center[-1] instead of a fixed mean
 	var new_tunnel_height = rng.randfn(MEAN_TUNNEL_HEIGHT, TUNNEL_HEIGHT_DEVIATION)
-	new_tunnel_height = max(new_tunnel_height, 50.0) # avoid degenerate/negative height
 
 	self.center.append(new_center) 
 	self.tunnel_height.append(max(TUNNEL_MIN_HEIGHT, new_tunnel_height))

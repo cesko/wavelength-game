@@ -33,7 +33,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	in_game_ui.set_score(get_score())
-	pass
+	
+#func _physics_process(_delta: float) -> void:
+	#_check_player_collision()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -76,6 +78,18 @@ func get_score() -> Score:
 	score.actions = player.get_actions()
 	return score
 	
+
+func _check_player_collision() -> bool:
+	var pos = player.global_position
+	var distance = environment.get_vertical_distances(pos)
+	var min_distance = min(distance.x, distance.y)
+	print(min_distance)
+	if (min_distance - player.size*0.5) < 0:
+		player.dies()
+		return true
+	return false
+
+
 func _apply_game_settings(gs:GameSettings) -> void:
 	if game_settings:
 		player.speed = gs.speed
