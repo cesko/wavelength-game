@@ -5,11 +5,16 @@ extends Control
 signal play(GameSettings)
 signal exit()
 
+@export var title_screen:Node
+@export var play_screen:Node
 
-@onready var screens = {
-	"title": $MarginContainer/PanelContainer/TitleScreen,
-	"play": $MarginContainer/PanelContainer/PlayScreen
+
+@onready var screens : Dictionary  =  {
+	"title": title_screen,
+	"play": play_screen
 }
+
+
 
 var initial_screen = "title"
 var current_screen
@@ -22,6 +27,8 @@ func _ready() -> void:
 	if initial_focus:
 		initial_focus.grab_focus()
 	
+	custom_minimum_size = get_viewport().get_visible_rect().size
+	size = get_viewport().get_visible_rect().size	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

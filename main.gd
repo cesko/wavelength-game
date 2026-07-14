@@ -9,6 +9,7 @@ var game_context_node: Node
 var _game_settings
 
 func _ready() -> void:
+	print("Viewport size: ", get_viewport().size)
 	load_title_context()
 
 func unload_all() -> void:
