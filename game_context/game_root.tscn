@@ -112,6 +112,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_434cm")
 
 [node name="Environment" parent="." unique_id=1320472925 instance=ExtResource("1_81bfv")]
 process_mode = 1
+collision_thickness = 200.0
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="quit_pressed" from="Camera2D/PausedUI" to="." method="_on_quit"]
