@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://3uem5yd35kho" path="res://title_context/gradient_label/gradient_label.gdshader" id="4_o1s6f"]
 [ext_resource type="Script" uid="uid://b3i6gpa1k5ypv" path="res://title_context/gradient_label/gradient_label.gd" id="5_pdtn1"]
 [ext_resource type="Script" uid="uid://ttgdkry3rs5g" path="res://core/components/grab_focus_upon_visible.gd" id="6_o1s6f"]
+[ext_resource type="Script" uid="uid://cyof2kr17bm5o" path="res://title_context/high_score_screen.gd" id="7_pdtn1"]
 
 [sub_resource type="Environment" id="Environment_434cm"]
 background_mode = 3
@@ -22,10 +23,16 @@ use_hdr = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4uekc"]
 shader = ExtResource("4_o1s6f")
 shader_parameter/gradient_texture = SubResource("GradientTexture1D_a21kt")
-shader_parameter/label_global_x = 102.0
+shader_parameter/label_global_x = 0.0
 shader_parameter/label_width = 1715.0
 
-[node name="TitleRoot" type="Control" unique_id=1018263472 node_paths=PackedStringArray("title_screen", "play_screen")]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_434cm"]
+color = Color(0, 1.661, 2.454, 1)
+grow_begin = 50.0
+grow_end = 50.0
+thickness = 4
+
+[node name="TitleRoot" type="Control" unique_id=1018263472 node_paths=PackedStringArray("title_screen", "play_screen", "highscore_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +44,7 @@ size_flags_vertical = 6
 script = ExtResource("1_o1s6f")
 title_screen = NodePath("TitleScreen")
 play_screen = NodePath("PlayScreen")
+highscore_screen = NodePath("HighScoreScreen")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1708568938]
 environment = SubResource("Environment_434cm")
@@ -52,6 +60,7 @@ position = Vector2(960, 600)
 texture = ExtResource("2_o1s6f")
 
 [node name="TitleScreen" type="CenterContainer" parent="." unique_id=571964615]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -172,6 +181,175 @@ theme = ExtResource("2_65eea")
 text = "SINUCIDAL
 "
 
+[node name="HighScoreScreen" type="Control" parent="." unique_id=33080036]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_pdtn1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HighScoreScreen" unique_id=891496643]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -728.5
+offset_top = -267.0
+offset_right = 728.5
+offset_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HighScoreScreen/VBoxContainer" unique_id=1443892221]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="EasyList" type="VBoxContainer" parent="HighScoreScreen/VBoxContainer/HBoxContainer" unique_id=2113629927]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HighScoreScreen/VBoxContainer/HBoxContainer/EasyList" unique_id=1354261509]
+layout_mode = 2
+theme = ExtResource("2_65eea")
+theme_override_font_sizes/font_size = 80
+text = "Easy"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HighScoreScreen/VBoxContainer/HBoxContainer/EasyList" unique_id=1804425683]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_434cm")
+
+[node name="EasyScoreboard" type="Label" parent="HighScoreScreen/VBoxContainer/HBoxContainer/EasyList" unique_id=673984863]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(-30, 0)
+theme = ExtResource("2_65eea")
+text = "as
+asd
+asd
+asd
+"
+horizontal_alignment = 2
+
+[node name="NormalList" type="VBoxContainer" parent="HighScoreScreen/VBoxContainer/HBoxContainer" unique_id=1513082266]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HighScoreScreen/VBoxContainer/HBoxContainer/NormalList" unique_id=813250159]
+layout_mode = 2
+theme = ExtResource("2_65eea")
+theme_override_font_sizes/font_size = 80
+text = "Normal"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HighScoreScreen/VBoxContainer/HBoxContainer/NormalList" unique_id=1514005880]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_434cm")
+
+[node name="NormalScoreboard" type="Label" parent="HighScoreScreen/VBoxContainer/HBoxContainer/NormalList" unique_id=585405382]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(-30, 0)
+theme = ExtResource("2_65eea")
+text = "as
+asd
+asd
+asd
+"
+horizontal_alignment = 2
+
+[node name="HardList" type="VBoxContainer" parent="HighScoreScreen/VBoxContainer/HBoxContainer" unique_id=316057751]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HighScoreScreen/VBoxContainer/HBoxContainer/HardList" unique_id=1673544298]
+layout_mode = 2
+theme = ExtResource("2_65eea")
+theme_override_font_sizes/font_size = 80
+text = "Hard"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HighScoreScreen/VBoxContainer/HBoxContainer/HardList" unique_id=384101635]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_434cm")
+
+[node name="HardScoreboard" type="Label" parent="HighScoreScreen/VBoxContainer/HBoxContainer/HardList" unique_id=974696374]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(-30, 0)
+theme = ExtResource("2_65eea")
+text = "as
+asd
+asd
+asd
+"
+horizontal_alignment = 2
+
+[node name="SinuscidalList" type="VBoxContainer" parent="HighScoreScreen/VBoxContainer/HBoxContainer" unique_id=1972818717]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HighScoreScreen/VBoxContainer/HBoxContainer/SinuscidalList" unique_id=1194514434]
+layout_mode = 2
+theme = ExtResource("2_65eea")
+theme_override_font_sizes/font_size = 80
+text = "Sinucidal"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HighScoreScreen/VBoxContainer/HBoxContainer/SinuscidalList" unique_id=666903015]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_434cm")
+
+[node name="SinuscidalScoreboard" type="Label" parent="HighScoreScreen/VBoxContainer/HBoxContainer/SinuscidalList" unique_id=518180162]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(-30, 0)
+theme = ExtResource("2_65eea")
+text = "as
+asd
+asd
+asd
+"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HighScoreScreen" unique_id=1104983875]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -131.0
+offset_right = 142.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HighScoreScreen/MarginContainer" unique_id=1880510524]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="ResetScoresBtn" type="Button" parent="HighScoreScreen/MarginContainer/HBoxContainer" unique_id=1391818114]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_65eea")
+text = "Reset Highscore"
+
+[node name="BackBtn" type="Button" parent="HighScoreScreen/MarginContainer/HBoxContainer" unique_id=1136978298]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_65eea")
+text = "Back"
+
 [connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/VBoxContainer/Highscore" to="." method="_on_highscore_pressed"]
 [connection signal="pressed" from="TitleScreen/VBoxContainer/HBoxContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_pressed"]
@@ -180,3 +358,5 @@ text = "SINUCIDAL
 [connection signal="pressed" from="PlayScreen/VBoxContainer/VBoxContainer/PlayNormalBtn" to="." method="_on_play_normal_btn_pressed"]
 [connection signal="pressed" from="PlayScreen/VBoxContainer/VBoxContainer/PlayHardBtn" to="." method="_on_play_hard_btn_pressed"]
 [connection signal="pressed" from="PlayScreen/VBoxContainer/VBoxContainer/PlaySinucidalBtn" to="." method="_on_play_sinucidal_btn_pressed"]
+[connection signal="pressed" from="HighScoreScreen/MarginContainer/HBoxContainer/ResetScoresBtn" to="HighScoreScreen" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="HighScoreScreen/MarginContainer/HBoxContainer/BackBtn" to="." method="_on_back_button_pressed_from_highscore_screen"]

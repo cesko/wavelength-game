@@ -5,11 +5,12 @@ signal exit()
 
 @export var title_screen:Node
 @export var play_screen:Node
-
+@export var highscore_screen:Node
 
 @onready var screens : Dictionary  =  {
 	"title": title_screen,
-	"play": play_screen
+	"play": play_screen,
+	"highscore": highscore_screen
 }
 
 
@@ -61,7 +62,7 @@ func _on_settings_btn_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_highscore_pressed() -> void:
-	pass # Replace with function body.
+	switch_to_screen("highscore")
 
 func _on_exit_pressed() -> void:
 	exit.emit()
@@ -79,3 +80,8 @@ func _on_play_hard_btn_pressed() -> void:
 
 func _on_play_sinucidal_btn_pressed() -> void:
 	play.emit(GameSettings.sinucidal())
+
+
+# --- Highscore screen ---
+func _on_back_button_pressed_from_highscore_screen():
+	switch_to_screen("title")

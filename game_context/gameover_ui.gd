@@ -14,10 +14,6 @@ func _ready() -> void:
 	play_again_button.pressed.connect(func (): play_again_button_pressed.emit())
 	quit_button.pressed.connect(func(): quit_button_pressed.emit())
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func set_score(score:Score) -> void:
 	score_display.text = str(score.score())
 	actions_display.text = String.num(score.energy(), 1)

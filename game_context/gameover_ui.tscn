@@ -73,6 +73,24 @@ theme_override_font_sizes/font_size = 150
 text = "Game Over"
 horizontal_alignment = 1
 
+[node name="NewHighscoreLabel" type="Label" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer" unique_id=581718797]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_w52oh")
+theme_override_colors/font_color = Color(2.454227, 0, 2.454227, 1)
+theme_override_font_sizes/font_size = 72
+text = "NEW HIGHSCORE!"
+horizontal_alignment = 1
+
+[node name="HighscoreLabel" type="Label" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer" unique_id=1746647621]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_w52oh")
+theme_override_colors/font_color = Color(0, 1.661, 2.454, 1)
+theme_override_font_sizes/font_size = 60
+text = "Current Highscore: "
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer" unique_id=2056713868]
 layout_mode = 2
 theme_override_constants/separation = 50

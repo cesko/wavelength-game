@@ -56,6 +56,8 @@ func get_actions() -> float:
 	return player_input.thrust_counter
 
 func die():
+	if not is_alive:
+		return
 	is_alive = false
 	animation_player.play("death")
 	died.emit()

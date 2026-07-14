@@ -6,7 +6,7 @@ var title_context_node: Node
 var game_context_scene = preload("res://game_context/game_root.tscn")
 var game_context_node: Node
 
-var _game_settings
+var _game_settings:GameSettings
 
 func _ready() -> void:
 	print("Viewport size: ", get_viewport().size)
@@ -50,7 +50,7 @@ func _on_game_quit() -> void:
 	load_title_context()
 
 func _on_new_score(_score: Score) -> void:
-	pass
+	HighscoreManager.add_score(_game_settings.difficulty, "Unknown Player", _score.score())
 
 func exit() -> void:
 	get_tree().quit()
