@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 	_apply_game_settings(game_settings)
 	gameover_ui.hide()
-	call_deferred("freeze_for_start_up")	
+	call_deferred("freeze_for_start_up")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,6 +83,7 @@ func _apply_game_settings(gs:GameSettings) -> void:
 
 func _show_game_over_screen() -> void:
 	_game_status = GameStatus.GAME_OVER
+	in_game_ui.hide()
 	gameover_ui.show()
 	gameover_ui.set_score(get_score())
 	

@@ -15,18 +15,18 @@ expand_margin_right = 50.0
 expand_margin_bottom = 50.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_434cm"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_left = 50.0
+content_margin_top = 0.0
+content_margin_right = 50.0
+content_margin_bottom = 0.0
 draw_center = false
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 1.661, 2.454, 1)
-corner_radius_top_left = 10
-corner_radius_bottom_right = 10
+corner_radius_top_left = 50
+corner_radius_bottom_right = 50
 
 [node name="GameoverUi" type="Control" unique_id=299698326]
 layout_mode = 3
@@ -53,7 +53,6 @@ theme_override_constants/margin_bottom = 100
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="TitleScreen/CenterContainer" unique_id=845354956]
-custom_maximum_size = Vector2(700, 300)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c4v0r")
 
@@ -68,8 +67,8 @@ size_flags_horizontal = 4
 theme = ExtResource("2_w52oh")
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0, 1.661, 2.454, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 90
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 150
 text = "Game Over"
 horizontal_alignment = 1
 
@@ -94,16 +93,16 @@ columns = 2
 layout_mode = 2
 theme = ExtResource("2_w52oh")
 theme_override_colors/font_color = Color(0, 1.661, 2.454, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 72
 text = "Score: "
 
 [node name="ScoreDisplay" type="Label" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/CenterContainer/VBoxContainer2" unique_id=108848071]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_w52oh")
 theme_override_colors/font_color = Color(2.454227, 0, 2.454227, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 72
 horizontal_alignment = 2
 
 [node name="ActionsLabel" type="Label" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/CenterContainer/VBoxContainer2" unique_id=1128309709]
@@ -112,7 +111,7 @@ tooltip_text = "Score / Thrusts"
 mouse_filter = 1
 theme = ExtResource("2_w52oh")
 theme_override_colors/font_color = Color(0, 1.661, 2.454, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 72
 text = "Energy: "
 
 [node name="ActionsDisplay" type="Label" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/CenterContainer/VBoxContainer2" unique_id=1450405609]
@@ -122,7 +121,7 @@ tooltip_text = "Score / Thrusts"
 mouse_filter = 1
 theme = ExtResource("2_w52oh")
 theme_override_colors/font_color = Color(2.454227, 0, 2.454227, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 72
 text = "n.a."
 horizontal_alignment = 2
 
@@ -137,7 +136,7 @@ alignment = 1
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme = ExtResource("2_w52oh")
-text = "Play Again"
+text = "Try Again"
 
 [node name="Quit" type="Button" parent="TitleScreen/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1515297221]
 custom_minimum_size = Vector2(0, 40)

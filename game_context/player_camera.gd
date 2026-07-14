@@ -10,12 +10,12 @@ extends Camera2D
 @export var fixed_y: float = 0.0
 
 func _ready() -> void:
-	# Optionally initialize fixed_y to the camera's starting position
-	if fixed_y == 0.0:
-		fixed_y = global_position.y
+	_update_position()
 
-func _process(_delta: float) -> void:
+func _update_position() -> void:
 	if not target:
 		return
-
 	global_position = Vector2(target.global_position.x + offset_x, fixed_y)
+
+func _process(_delta: float) -> void:
+	_update_position()
