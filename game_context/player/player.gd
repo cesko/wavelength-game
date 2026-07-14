@@ -9,6 +9,9 @@ extends CharacterBody2D
 ## Acceleration due to gravity
 @export var gravity:float = 700
 
+## player size
+@export var size:float = 10.0
+
 ## emmitted when the character dies
 signal died
 
@@ -16,6 +19,11 @@ signal died
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var is_alive = true
+
+func _ready() -> void:
+	$Sprite2D.scale = Vector2(size/100.0,size/100.0)
+	$TrackingLine2D.width = size
+	$CollisionShape2D.shape.radius = size/2.0
 
 func _physics_process(delta: float) -> void:
 	

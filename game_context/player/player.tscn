@@ -67,21 +67,6 @@ _data = {
 &"death": SubResource("Animation_vkh6m")
 }
 
-[sub_resource type="QuadMesh" id="QuadMesh_dh5rl"]
-size = Vector2(12, 12)
-
-[sub_resource type="Gradient" id="Gradient_vkh6m"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.0034843206, 0.9819277)
-colors = PackedColorArray(16.279, 1.459, 18.892, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5rurt"]
-gradient = SubResource("Gradient_vkh6m")
-use_hdr = true
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5217391)
-
 [sub_resource type="Curve" id="Curve_4gxhl"]
 _data = [Vector2(0, 0), 0.0, 1.6693423, 0, 0, Vector2(1, 1), -0.4815413, 0.0, 0, 0]
 point_count = 2
@@ -129,6 +114,18 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_f5gn6"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="Gradient" id="Gradient_drthw"]
+interpolation_mode = 1
+colors = PackedColorArray(16.279, 1.459, 18.892, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_434cm"]
+gradient = SubResource("Gradient_drthw")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="Player" type="CharacterBody2D" unique_id=1645657139]
 script = ExtResource("1_rt1og")
 
@@ -140,10 +137,6 @@ shape = SubResource("CircleShape2D_434cm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1581863336]
 libraries/ = SubResource("AnimationLibrary_ak6bu")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=329924458]
-mesh = SubResource("QuadMesh_dh5rl")
-texture = SubResource("GradientTexture2D_5rurt")
 
 [node name="TrackingLine2D" type="Line2D" parent="." unique_id=273868232 node_paths=PackedStringArray("target_node")]
 points = PackedVector2Array(-100, 0, 0, 0)
@@ -188,3 +181,7 @@ scale_amount_min = 0.7
 scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_urg26")
 color_ramp = SubResource("Gradient_f5gn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=477636036]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("GradientTexture2D_434cm")
