@@ -4,10 +4,12 @@ extends Node2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var environment: Node2D = $Environment
 
-@onready var gameover_ui: Control = $CanvasLayer/GameoverUi
-@onready var paused_ui: Control = $CanvasLayer/PausedUI
-@onready var start_paused_ui: Control = $CanvasLayer/StartPaused
-@onready var in_game_ui: Control = $CanvasLayer/InGameUI
+
+@export var in_game_ui: Control
+@export var gameover_ui: Control
+@export var paused_ui: Control
+@export var start_paused_ui: Control
+
 
 
 enum GameStatus {STARTING, RUNNING, PAUSED, GAME_OVER}

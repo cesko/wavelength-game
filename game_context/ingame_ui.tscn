@@ -3,51 +3,19 @@
 [ext_resource type="Script" uid="uid://biqb8snay8wp7" path="res://game_context/ingame_ui.gd" id="1_xb8su"]
 [ext_resource type="Theme" uid="uid://bpsg4p6nrkxnx" path="res://assets/wave_length_theme.tres" id="2_a6rgk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4v0r"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-bg_color = Color(0, 0, 0, 0.98039216)
-border_color = Color(0, 1.2308635, 1.8247963, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
-
-[node name="InGameUI" type="Control" unique_id=299698326]
+[node name="InGameUI" type="Control" unique_id=299698326 node_paths=PackedStringArray("score_label")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_xb8su")
+score_label = NodePath("Score")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=608508652]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -380.0
-offset_bottom = 160.0
-grow_horizontal = 0
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 80
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=845354956]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_c4v0r")
-
-[node name="ScoreLabel" type="Label" parent="MarginContainer/PanelContainer" unique_id=1423506773]
+[node name="Score" type="Label" parent="." unique_id=684258177]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 91.0
 size_flags_horizontal = 4
 theme = ExtResource("2_a6rgk")
 theme_override_colors/font_color = Color(0, 1.661, 2.454, 1)

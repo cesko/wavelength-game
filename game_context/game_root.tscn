@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cqv8dx5p0opch" path="res://game_context/player/player.tscn" id="2_a4g5s"]
 [ext_resource type="Script" uid="uid://curo7l8bami4t" path="res://game_context/player_camera.gd" id="3_a4g5s"]
 [ext_resource type="PackedScene" uid="uid://ct8lvo0rq2k1d" path="res://game_context/gameover_ui.tscn" id="6_nc542"]
+[ext_resource type="Theme" uid="uid://bpsg4p6nrkxnx" path="res://assets/wave_length_theme.tres" id="7_0n6m7"]
 [ext_resource type="PackedScene" uid="uid://cevpcdcyfddvn" path="res://game_context/paused_ui.tscn" id="7_sqso8"]
+[ext_resource type="Script" uid="uid://biqb8snay8wp7" path="res://game_context/ingame_ui.gd" id="8_0n6m7"]
 [ext_resource type="PackedScene" uid="uid://dh2cca2winlbt" path="res://game_context/start_paused_ui.tscn" id="8_hp7ro"]
-[ext_resource type="PackedScene" uid="uid://cenukjqpuur7v" path="res://game_context/ingame_ui.tscn" id="9_rvcey"]
 
 [sub_resource type="Environment" id="Environment_a4g5s"]
 background_mode = 3
@@ -17,8 +18,19 @@ glow_strength = 0.7
 glow_bloom = 1.0
 glow_hdr_scale = 1.0
 
-[node name="GameRoot" type="Node2D" unique_id=1445984586]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_434cm"]
+bg_color = Color(0, 0, 0, 0.98039216)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="GameRoot" type="Node2D" unique_id=1445984586 node_paths=PackedStringArray("in_game_ui", "gameover_ui", "paused_ui", "start_paused_ui")]
 script = ExtResource("1_5rpyc")
+in_game_ui = NodePath("Camera2D/InGameUi")
+gameover_ui = NodePath("Camera2D/GameoverUi")
+paused_ui = NodePath("Camera2D/PausedUI")
+start_paused_ui = NodePath("Camera2D/StartPaused")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=501910554]
 environment = SubResource("Environment_a4g5s")
@@ -42,24 +54,66 @@ script = ExtResource("3_a4g5s")
 target = NodePath("../Player")
 offset_x = 600.0
 
+[node name="StartPaused" parent="Camera2D" unique_id=182075411 instance=ExtResource("8_hp7ro")]
+z_index = 99
+
+[node name="PausedUI" parent="Camera2D" unique_id=1471847726 instance=ExtResource("7_sqso8")]
+visible = false
+z_index = 99
+
+[node name="GameoverUi" parent="Camera2D" unique_id=299698326 instance=ExtResource("6_nc542")]
+visible = false
+z_index = 99
+
+[node name="InGameUi" type="MarginContainer" parent="Camera2D" unique_id=858945421 node_paths=PackedStringArray("score_label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+script = ExtResource("8_0n6m7")
+score_label = NodePath("Score")
+
+[node name="Score" type="Label" parent="Camera2D/InGameUi" unique_id=691090293]
+z_index = 99
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("7_0n6m7")
+theme_override_colors/font_color = Color(0, 1.661, 2.454, 1)
+theme_override_font_sizes/font_size = 72
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Camera2D/InGameUi/Score" unique_id=453616907]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_434cm")
+
 [node name="Environment" parent="." unique_id=1320472925 instance=ExtResource("1_81bfv")]
 process_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=414641988]
-
-[node name="InGameUI" parent="CanvasLayer" unique_id=285054838 instance=ExtResource("9_rvcey")]
-mouse_filter = 2
-
-[node name="GameoverUi" parent="CanvasLayer" unique_id=299698326 instance=ExtResource("6_nc542")]
-visible = false
-
-[node name="PausedUI" parent="CanvasLayer" unique_id=1471847726 instance=ExtResource("7_sqso8")]
-visible = false
-
-[node name="StartPaused" parent="CanvasLayer" unique_id=182075411 instance=ExtResource("8_hp7ro")]
-
 [connection signal="died" from="Player" to="." method="_on_player_died"]
-[connection signal="play_again_button_pressed" from="CanvasLayer/GameoverUi" to="." method="_on_gameover_ui_play_again_button_pressed"]
-[connection signal="quit_button_pressed" from="CanvasLayer/GameoverUi" to="." method="_on_quit"]
-[connection signal="quit_pressed" from="CanvasLayer/PausedUI" to="." method="_on_quit"]
-[connection signal="resume_pressed" from="CanvasLayer/PausedUI" to="." method="unpause"]
+[connection signal="quit_pressed" from="Camera2D/PausedUI" to="." method="_on_quit"]
+[connection signal="resume_pressed" from="Camera2D/PausedUI" to="." method="unpause"]
+[connection signal="play_again_button_pressed" from="Camera2D/GameoverUi" to="." method="_on_gameover_ui_play_again_button_pressed"]
+[connection signal="quit_button_pressed" from="Camera2D/GameoverUi" to="." method="_on_quit"]
