@@ -443,8 +443,8 @@ class NightSkyGenerator:
 
 def main() -> None:
     """Example entry point demonstrating night sky generation."""
-    config_1 = NightSkyConfig(
-        image_size=(1920, 1200),
+    config_sparse = NightSkyConfig(
+        image_size=(4096, 4096),
         background_color=(10, 10, 10),
         cell_size=256,
         stars_per_cell=4,
@@ -465,11 +465,11 @@ def main() -> None:
         seed=43,
     )
 
-    config_2 = NightSkyConfig(
-        image_size=(1920, 1200),
+    config_dense = NightSkyConfig(
+        image_size=(4096, 4096),
         background_color=(10, 10, 10),
         cell_size=256,
-        stars_per_cell=10,
+        stars_per_cell=13,
         star_colors=[
             StarColorOption((255, 255, 255), 0.55),
             StarColorOption((100, 255, 255), 0.20), # turqoise
@@ -487,8 +487,11 @@ def main() -> None:
         seed=43,
     )
 
-    generator = NightSkyGenerator(config_2)
-    generator.save("night_sky.png")
+    generator = NightSkyGenerator(config_sparse)
+    generator.save("night_sky_sparse.png")
+
+    generator = NightSkyGenerator(config_dense)
+    generator.save("night_sky_dense.png")
 
 
 if __name__ == "__main__":

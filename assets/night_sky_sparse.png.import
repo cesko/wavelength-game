@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do741kwiimxy7"
-path="res://.godot/imported/night_sky.png-ae97fb252de3c3d408ca2ed9f1298ab7.ctex"
+uid="uid://b66mmsvludmqh"
+path="res://.godot/imported/night_sky_sparse.png-1188c87ed608211c077cc0225b8f8afd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/night_sky.png"
-dest_files=["res://.godot/imported/night_sky.png-ae97fb252de3c3d408ca2ed9f1298ab7.ctex"]
+source_file="res://assets/night_sky_sparse.png"
+dest_files=["res://.godot/imported/night_sky_sparse.png-1188c87ed608211c077cc0225b8f8afd.ctex"]
 
 [params]
 

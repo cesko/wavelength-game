@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cc7x0nrdfplcp" path="res://game_context/game_root.gd" id="1_5rpyc"]
 [ext_resource type="PackedScene" uid="uid://dqtpls2kf83v3" path="res://game_context/environment.tscn" id="1_81bfv"]
-[ext_resource type="Texture2D" uid="uid://do741kwiimxy7" path="res://assets/night_sky.png" id="1_nkmqt"]
 [ext_resource type="PackedScene" uid="uid://cqv8dx5p0opch" path="res://game_context/player/player.tscn" id="2_a4g5s"]
+[ext_resource type="Texture2D" uid="uid://b66mmsvludmqh" path="res://assets/night_sky_sparse.png" id="2_dxksf"]
 [ext_resource type="Script" uid="uid://curo7l8bami4t" path="res://game_context/player_camera.gd" id="3_a4g5s"]
 [ext_resource type="PackedScene" uid="uid://ct8lvo0rq2k1d" path="res://game_context/gameover_ui.tscn" id="6_nc542"]
 [ext_resource type="Theme" uid="uid://bpsg4p6nrkxnx" path="res://assets/wave_length_theme.tres" id="7_0n6m7"]
@@ -39,11 +39,11 @@ environment = SubResource("Environment_a4g5s")
 process_mode = 1
 z_index = -1
 scroll_scale = Vector2(0.05, 0.05)
-repeat_size = Vector2(1920, 1200)
+repeat_size = Vector2(4096, 4096)
 
 [node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=1227969592]
-position = Vector2(960, 600)
-texture = ExtResource("1_nkmqt")
+position = Vector2(2048, 2048)
+texture = ExtResource("2_dxksf")
 
 [node name="Player" parent="." unique_id=1645657139 instance=ExtResource("2_a4g5s")]
 process_mode = 1

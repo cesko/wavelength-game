@@ -72,8 +72,7 @@ _data = [Vector2(0, 0), 0.0, 1.6693423, 0, 0, Vector2(1, 1), -0.4815413, 0.0, 0,
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_ak6bu"]
-offsets = PackedFloat32Array(0.077738516, 1)
-colors = PackedColorArray(1.1246428, 0.27231458, 2.7075353, 1, 16.279064, 1.4585093, 18.892157, 1)
+colors = PackedColorArray(0.71260345, 0.003977127, 1.7582281, 1, 16.279064, 1.4585093, 18.892157, 1)
 
 [sub_resource type="Gradient" id="Gradient_4gxhl"]
 offsets = PackedFloat32Array(0.73493975, 0.87349397)
@@ -122,6 +121,7 @@ colors = PackedColorArray(16.279, 1.459, 18.892, 1, 0, 0, 0, 0)
 gradient = SubResource("Gradient_drthw")
 width = 100
 height = 100
+use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)

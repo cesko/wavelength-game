@@ -52,11 +52,11 @@ environment = SubResource("Environment_434cm")
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1532864874]
 z_index = -1
 scroll_scale = Vector2(0.05, 0.05)
-repeat_size = Vector2(1920, 1200)
+repeat_size = Vector2(4096, 4096)
 autoscroll = Vector2(10, 0)
 
 [node name="Background" type="Sprite2D" parent="Parallax2D" unique_id=2059804053]
-position = Vector2(960, 600)
+position = Vector2(2048, 2048)
 texture = ExtResource("2_o1s6f")
 
 [node name="TitleScreen" type="CenterContainer" parent="." unique_id=571964615]
